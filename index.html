@@ -141,71 +141,89 @@
     </div>
 
     <script>
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxZzy8teSaGlLJ7kdGadvIx_WH4R3d7izOJPiuzHaoPqytHouz-PRhTius9C6uXjB0/exec";
+    // 1. Usamos tu URL de Google Sheets
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxZzy8teSaGlLJ7kdGadvIx_WH4R3d7izOJPiuzHaoPqytHouz-PRhTius9C6uXjB0/exec";
 
-        const preguntas = [
-            { t: "Al consolidar reportes de devoluciones de múltiples sucursales, su enfoque habitual es:", o: [["Crear macros personalizadas para automatizar todo", 2], ["Usar tablas dinámicas con filtros segmentados", 4], ["Consolidar manualmente en una nueva hoja", 1], ["Solicitar que cada sucursal envíe formato unificado", 3]] },
-            { t: "Un cliente exige compensación por retraso en recolección (error del transportista externo):", o: [["Explicar que la responsabilidad no es de la empresa", 1], ["Compensar discretamente para evitar escalación", 2], ["Proponer gestionar el reclamo directamente con el transportista", 4], ["Ofrecer descuento en próxima compra sin reconocer responsabilidad", 3]] },
-            { t: "Al documentar un nuevo procedimiento de inspección para repuestos:", o: [["Escribir párrafos descriptivos en documento continuo", 2], ["Crear diagramas de flujo con formato profesional", 4], ["Dictar instrucciones para que otro redacte", 1], ["Usar plantilla anterior modificando puntos clave", 3]] },
-            { t: "Un proveedor con histórico confiable entrega lote con 2% de discrepancia en documentación:", o: [["Rechazar todo el lote inmediatamente", 1], ["Aceptar con observación escrita", 3], ["Aceptar sin comentarios por la relación", 2], ["Revisar lote completo antes de decidir", 4]] },
-            { t: "Al detectar tendencia de falla en tipo específico de cojinete:", o: [["Registrar para análisis posterior", 2], ["Reportar inmediatamente con datos preliminares", 4], ["Esperar más casos para confirmar patrón", 3], ["Verificar solo los repuestos en inventario", 1]] },
-            { t: "Para analizar causas raíz de incremento del 15% en devoluciones:", o: [["Revisar muestras aleatorias del mes", 2], ["Cuestionar al equipo de atención al cliente", 3], ["Cruzar datos de productos, clientes y motivos", 4], ["Atribuirlo a estacionalidad del mercado", 1]] },
-            { t: "Un colaborador insiste en método menos eficiente pero cómodo para él:", o: [["Imponer el procedimiento oficial", 2], ["Permitir su método mientras cumpla", 1], ["Comparar resultados de ambos métodos", 4], ["Delegar la decisión en su supervisor", 3]] },
-            { t: "Para identificar repuestos obsoletos en inventario:", o: [["Consultar reportes de sistema ERP", 3], ["Revisar manualmente registros físicos", 1], ["Cruzar ventas, devoluciones y garantías", 4], ["Preguntar al almacenista experto", 2]] },
-            { t: "Compañero de otro departamento solicita 'flexibilizar' criterio de calidad para cumplir meta:", o: [["Negarse categóricamente", 2], ["Consultar con supervisión", 3], ["Evaluar caso específico y documentar", 4], ["Aceptar excepcionalmente", 1]] },
-            { t: "¿Qué revista técnica consultaría para actualizarse en componentes mecánicos?", o: [["Mecánica Popular", 2], ["Automotive News", 3], ["SAE International o similar", 4], ["No consulto revistas especializadas", 1]] },
-            { t: "Al notificar defecto de fabricación a proveedor, adjuntaría:", o: [["Solo el reporte estándar", 2], ["Reporte con fotos y códigos afectados", 4], ["Descripción escrita del problema", 3], ["Muestra física del componente", 1]] },
-            { t: "Para medir satisfacción post-devolución:", o: [["Encuesta telefónica aleatoria", 3], ["Análisis de reclamos repetidos", 4], ["Revisión de comentarios en redes", 2], ["Asumir satisfacción si no hay queja", 1]] },
-            { t: "Dos áreas disputan responsabilidad en proceso de logística inversa:", o: [["Definir límites claros de responsabilidad", 3], ["Mediar para acuerdo colaborativo", 4], ["Elevar a dirección para decisión", 2], ["Asignar rotación de responsabilidades", 1]] },
-            { t: "En su tiempo libre, ¿cómo investigaría falla recurrente en transmisiones?", o: [["Revisando manuales técnicos", 4], ["Preguntando a mecánicos conocidos", 3], ["Buscando en foros genéricos", 2], ["No investigaría fuera del trabajo", 1]] },
-            { t: "Al estandarizar informe semanal para dirección:", o: [["Mantener formato tradicional", 2], ["Crear dashboard visual con indicadores", 4], ["Aumentar frecuencia a reporte diario", 1], ["Reducir información a lo esencial", 3]] }
-        ];
+    const preguntas = [
+        { t: "Al consolidar reportes de devoluciones de múltiples sucursales, su enfoque habitual es:", o: [["A. Crear macros personalizadas para automatizar todo", 2], ["B. Usar tablas dinámicas con filtros segmentados", 4], ["C. Consolidar manualmente en una nueva hoja", 1], ["D. Solicitar que cada sucursal envíe formato unificado", 3]] },
+        { t: "Un cliente exige compensación por retraso en recolección (error del transportista externo):", o: [["A. Explicar que la responsabilidad no es de la empresa", 1], ["B. Compensar discretamente para evitar escalación", 2], ["C. Proponer gestionar el reclamo directamente con el transportista", 4], ["D. Ofrecer descuento en próxima compra sin reconocer responsabilidad", 3]] },
+        { t: "Al documentar un nuevo procedimiento de inspección para repuestos:", o: [["A. Escribir párrafos descriptivos en documento continuo", 2], ["B. Crear diagramas de flujo con formato profesional", 4], ["C. Dictar instrucciones para que otro redacte", 1], ["D. Usar plantilla anterior modificando puntos clave", 3]] },
+        { t: "Un proveedor con histórico confiable entrega lote con 2% de discrepancia en documentación:", o: [["A. Rechazar todo el lote inmediatamente", 1], ["B. Aceptar con observación escrita", 3], ["C. Aceptar sin comentarios por la relación", 2], ["D. Revisar lote completo antes de decidir", 4]] },
+        { t: "Al detectar tendencia de falla en tipo específico de cojinete:", o: [["A. Registrar para análisis posterior", 2], ["B. Reportar inmediatamente con datos preliminares", 4], ["C. Esperar más casos para confirmar patrón", 3], ["D. Verificar solo los repuestos en inventario", 1]] },
+        { t: "Para analizar causas raíz de incremento del 15% en devoluciones:", o: [["A. Revisar muestras aleatorias del mes", 2], ["B. Cuestionar al equipo de atención al cliente", 3], ["C. Cruzar datos de productos, clientes y motivos", 4], ["D. Atribuirlo a estacionalidad del mercado", 1]] },
+        { t: "Un colaborador insiste en método menos eficiente pero cómodo para él:", o: [["A. Imponer el procedimiento oficial", 2], ["B. Permitir su método mientras cumpla", 1], ["C. Comparar resultados de ambos métodos", 4], ["D. Delegar la decisión en su supervisor", 3]] },
+        { t: "Para identificar repuestos obsoletos en inventario:", o: [["A. Consultar reportes de sistema ERP", 3], ["B. Revisar manualmente registros físicos", 1], ["C. Cruzar ventas, devoluciones y garantías", 4], ["D. Preguntar al almacenista experto", 2]] },
+        { t: "Compañero de otro departamento solicita 'flexibilizar' criterio de calidad para cumplir meta:", o: [["A. Negarse categóricamente", 2], ["B. Consultar con supervisión", 3], ["C. Evaluar caso específico y documentar", 4], ["D. Aceptar excepcionalmente", 1]] },
+        { t: "¿Qué revista técnica consultaría para actualizarse en componentes mecánicos?", o: [["A. Mecánica Popular", 2], ["B. Automotive News", 3], ["C. SAE International o similar", 4], ["D. No consulto revistas especializadas", 1]] },
+        { t: "Al notificar defecto de fabricación a proveedor, adjuntaría:", o: [["A. Solo el reporte estándar", 2], ["B. Reporte con fotos y códigos afectados", 4], ["C. Descripción escrita del problema", 3], ["D. Muestra física del componente", 1]] },
+        { t: "Para medir satisfacción post-devolución:", o: [["A. Encuesta telefónica aleatoria", 3], ["B. Análisis de reclamos repetidos", 4], ["C. Revisión de comentarios en redes", 2], ["D. Asumir satisfacción si no hay queja", 1]] },
+        { t: "Dos áreas disputan responsabilidad en proceso de logística inversa:", o: [["A. Definir límites claros de responsabilidad", 3], ["B. Mediar para acuerdo colaborativo", 4], ["C. Elevar a dirección para decisión", 2], ["D. Asignar rotación de responsabilidades", 1]] },
+        { t: "En su tiempo libre, ¿cómo investigaría falla recurrente en transmisiones?", o: [["A. Revisando manuales técnicos", 4], ["B. Preguntando a mecánicos conocidos", 3], ["C. Buscando en foros genéricos", 2], ["D. No investigaría fuera del trabajo", 1]] },
+        { t: "Al estandarizar informe semanal para dirección:", o: [["A. Mantener formato tradicional", 2], ["B. Crear dashboard visual con indicadores", 4], ["C. Aumentar frecuencia a reporte diario", 1], ["D. Reducir información a lo esencial", 3]] }
+    ];
 
-        const container = document.getElementById('contenedorPreguntas');
+    const container = document.getElementById('contenedorPreguntas');
 
+    // Agregamos campo de nombre que faltaba para el Sheets
+    const inputNombre = document.createElement('input');
+    inputNombre.type = "text";
+    inputNombre.id = "nombreCandidato";
+    inputNombre.placeholder = "Nombre completo del candidato";
+    inputNombre.style = "width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #ccc;";
+    inputNombre.required = true;
+    container.before(inputNombre);
+
+    preguntas.forEach((p, i) => {
+        let div = document.createElement('div');
+        div.className = 'pregunta-card';
+        div.innerHTML = `<p>${i + 1}. ${p.t}</p>`;
+        p.o.forEach((opt) => {
+            div.innerHTML += `
+                <label>
+                    <input type="radio" name="p${i}" value="${opt[1]}" required>
+                    ${opt[0]}
+                </label>`;
+        });
+        container.appendChild(div);
+    });
+
+    document.getElementById('testForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById('nombreCandidato').value;
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
+
+        const respuestas = [];
         preguntas.forEach((p, i) => {
-            let div = document.createElement('div');
-            div.className = 'pregunta-card';
-            div.innerHTML = `<p>${i + 1}. ${p.t}</p>`;
-            p.o.forEach((opt) => {
-                div.innerHTML += `
-                    <label>
-                        <input type="radio" name="p${i}" value="${opt[1]}" required>
-                        ${opt[0]}
-                    </label>`;
+            const rb = document.querySelector(`input[name="p${i}"]:checked`);
+            // Extraemos la letra y el texto para que el Sheets lo procese igual que el anterior
+            respuestas.push({ 
+                texto: rb.parentElement.innerText.trim(), 
+                puntos: rb.value 
             });
-            container.appendChild(div);
         });
 
-        document.getElementById('testForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = "Enviando...";
-
-            const formData = new FormData(e.target);
-            let totalPuntos = 0;
-            let respuestas = {};
-
-            formData.forEach((value, key) => {
-                totalPuntos += parseInt(value);
-                respuestas[key] = value;
-            });
-
-            try {
-                await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify({ totalPuntos, respuestas })
-                });
-                alert("¡Test enviado con éxito!");
-                location.reload();
-            } catch (err) {
-                alert("Error al enviar resultados.");
-                btn.disabled = false;
-                btn.innerText = "Enviar Resultados";
-            }
+        const payload = {
+            nombre: nombre,
+            respuestas: respuestas,
+            tipoTest: "ASISTENTE DE I+D" // Esto activará la creación/uso de esa pestaña
         };
-    </script>
+
+        try {
+            await fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(payload)
+            });
+            alert("¡Test enviado con éxito!");
+            location.reload();
+        } catch (err) {
+            alert("Error al enviar resultados.");
+            btn.disabled = false;
+            btn.innerText = "Enviar Resultados";
+        }
+    };
+</script>
 </body>
 </html>
